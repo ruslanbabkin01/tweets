@@ -4,8 +4,10 @@ export const CardList = styled.ul`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
   gap: 24px;
-  margin: 50px 0;
+
+  margin-bottom: 20px;
 
   ${props => props.theme.mq.desktop} {
   }

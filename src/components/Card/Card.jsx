@@ -17,21 +17,21 @@ function Card({ user, tweets, id, followers, avatar }) {
   const [isFollowing, setIsFollowing] = useState(false);
   const [followerCount, setFollowerCount] = useState(followers);
 
-  useEffect(() => {
-    const count = localStorage.getItem('followerCount');
-    if (count) {
-      setFollowerCount(parseInt(count));
-    }
-    const following = localStorage.getItem('isFollowing');
-    if (following) {
-      setIsFollowing(following === 'true');
-    }
-  }, []);
+  // useEffect(() => {
+  //   const count = localStorage.getItem('followerCount');
+  //   if (count) {
+  //     setFollowerCount(parseInt(count));
+  //   }
+  //   const following = localStorage.getItem('isFollowing');
+  //   if (following) {
+  //     setIsFollowing(following === 'true');
+  //   }
+  // }, []);
 
-  useEffect(() => {
-    localStorage.setItem('followerCount', followerCount.toString());
-    localStorage.setItem('isFollowing', isFollowing.toString());
-  }, [followerCount, isFollowing]);
+  // useEffect(() => {
+  //   localStorage.setItem('followerCount', followerCount.toString());
+  //   localStorage.setItem('isFollowing', isFollowing.toString());
+  // }, [followerCount, isFollowing]);
 
   const handleClick = () => {
     setIsFollowing(!isFollowing);

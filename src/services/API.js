@@ -13,7 +13,8 @@ export const updateFollowers = async (userId, newFollowers) => {
 export const fetchUsers = async currentPage => {
   try {
     const limit = 12;
-    await instance.get(`?page=${currentPage}&limit=${limit}`);
+    const response = await instance.get(`?page=${currentPage}&limit=${limit}`);
+    return response;
   } catch (error) {
     console.error('Error fetching users:', error.message);
   }
