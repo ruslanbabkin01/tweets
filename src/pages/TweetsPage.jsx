@@ -4,14 +4,13 @@ import CardGallery from '../components/CardList/CardGallery';
 import { BtnLoadMore } from '../components/BtnLoadMore/BtnLoadMore';
 import { fetchUsers } from '../services/API';
 import BackButton from '../components/BackButton/BackButton';
-// import users from './db/users.json';
+import { LIMIT_CARDS } from '../utils/constants';
 
 function TweetsPage() {
   const [users, setUsers] = useState([]);
   const [page, setPage] = useState(1);
   const [isHasUsers, setIsHasUsers] = useState(true);
   const [loading, setLoading] = useState(false);
-  const limit = 12;
 
   const onLoadMore = () => setPage(prevPage => prevPage + 1);
 
@@ -22,7 +21,7 @@ function TweetsPage() {
         const response = await fetchUsers(page);
         setUsers(prevUsers => [...prevUsers, ...response.data]);
 
-        if (response.data.length < limit) {
+        if (response.data.length < LIMIT_CARDS) {
           setIsHasUsers(false);
         }
         setLoading(false);

@@ -1,4 +1,5 @@
 import { instance } from '.';
+import { LIMIT_CARDS } from '../utils/constants';
 
 export const updateFollowers = async (userId, newFollowers) => {
   try {
@@ -12,8 +13,9 @@ export const updateFollowers = async (userId, newFollowers) => {
 
 export const fetchUsers = async currentPage => {
   try {
-    const limit = 12;
-    const response = await instance.get(`?page=${currentPage}&limit=${limit}`);
+    const response = await instance.get(
+      `?page=${currentPage}&limit=${LIMIT_CARDS}`
+    );
     return response;
   } catch (error) {
     console.error('Error fetching users:', error.message);

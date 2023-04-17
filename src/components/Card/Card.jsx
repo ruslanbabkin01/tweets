@@ -14,35 +14,25 @@ import {
 import Image from '../../images/icon-bg.png';
 import { updateFollowers } from '../../services/API';
 
-function Card({ user, tweets, id, followers, avatar }) {
+function Card({ tweets, id, followers, avatar }) {
   const [isFollowing, setIsFollowing] = useState(false);
   const [followerCount, setFollowerCount] = useState(followers);
 
   useEffect(() => {
-    const count = localStorage.getItem('followerCount');
-    if (count) {
-      setFollowerCount(parseInt(count));
-    }
-    const following = localStorage.getItem('isFollowing');
-    if (following) {
+    const following = localStorage.getItem(`following_${id}`);
+    if (following !== null) {
       setIsFollowing(following === 'true');
     }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem('followerCount', followerCount.toString());
-    localStorage.setItem('isFollowing', isFollowing.toString());
-  }, [followerCount, isFollowing]);
+  }, [id]);
 
   const handleClick = async () => {
     setIsFollowing(!isFollowing);
-    await updateFollowers(id, followerCount);
-
-    if (isFollowing) {
-      setFollowerCount(prevCount => prevCount - 1);
-    } else {
-      setFollowerCount(prevCount => prevCount + 1);
-    }
+    const newFollowerCount = isFollowing
+      ? followerCount - 1
+      : followerCount + 1;
+    await updateFollowers(id, newFollowerCount);
+    setFollowerCount(newFollowerCount);
+    localStorage.setItem(`following_${id}`, !isFollowing);
   };
 
   return (
@@ -58,7 +48,7 @@ function Card({ user, tweets, id, followers, avatar }) {
       </AvatarBox>
 
       <Tweets>{tweets} tweets</Tweets>
-      <Followers>{followers} followers</Followers>
+      <Followers>{followerCount.toLocaleString('en-US')} followers</Followers>
 
       <BtnFollow onClick={handleClick} isFollowing={isFollowing}>
         {isFollowing ? 'Following' : 'Follow'}
