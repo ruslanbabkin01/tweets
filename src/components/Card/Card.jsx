@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import {
   AvatarBox,
-  BgImage,
   BtnFollow,
   CardUser,
   Followers,
   IconGoit,
   ImageAva,
-  Line,
   PhotoBox,
   Tweets,
 } from './Card.styled';
-import Image from '../../images/icon-bg.png';
 import { updateFollowers } from '../../services/API';
 
 function Card({ tweets, id, followers, avatar }) {
@@ -39,8 +36,6 @@ function Card({ tweets, id, followers, avatar }) {
     <CardUser>
       <IconGoit />
 
-      <BgImage src={Image} alt="bg-image" />
-      <Line />
       <AvatarBox>
         <PhotoBox>
           <ImageAva src={avatar} alt="avatar" />

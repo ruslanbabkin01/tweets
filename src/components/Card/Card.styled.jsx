@@ -1,36 +1,41 @@
 import styled from '@emotion/styled';
 import { ReactComponent as Icon } from '../../images/logo.svg';
+import BgImage from '../../images/icon-bg.png';
 
 export const CardUser = styled.li`
   position: relative;
-  background-image: linear-gradient(
-    114.99deg,
-    #471ca9 -0.99%,
-    #5736a3 54.28%,
-    #4b2a99 78.99%
-  );
-
-  box-shadow: -2.5777px 6.87386px 20.6216px rgba(0, 0, 0, 0.23);
-  border-radius: 20px;
   width: 380px;
   height: 460px;
+  text-align: center;
+  background-image: url(${BgImage}),
+    linear-gradient(114.99deg, #471ca9 -0.99%, #5736a3 54.28%, #4b2a99 78.99%);
+  background-repeat: no-repeat;
+  background-position: top 28px center, center;
+  background-size: 308px 168px, 100%;
+  box-shadow: -2.5777px 6.87386px 20.6216px rgba(0, 0, 0, 0.23);
+  border-radius: 20px;
+
+  ::before {
+    content: '';
+    margin-top: 214px;
+    display: block;
+    width: 100%;
+    height: 8px;
+    background-color: ${p => p.theme.colors.gray};
+    box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.06),
+      inset 0px -1.71846px 3.43693px #ae7be3,
+      inset 0px 3.43693px 2.5777px #fbf8ff;
+  }
 `;
 
 export const IconGoit = styled(Icon)`
-  margin-top: 20px;
-  margin-left: 20px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
   fill: #fff;
   opacity: 0.3;
   height: 22px;
   width: 76px;
-`;
-
-export const BgImage = styled.img`
-  position: absolute;
-  left: 36px;
-  top: 28px;
-  width: 308px;
-  height: 168px;
 `;
 
 export const AvatarBox = styled.div`
@@ -65,26 +70,15 @@ export const ImageAva = styled.img`
   height: 60px;
 `;
 
-export const Line = styled.div`
-  margin-top: 168px;
-  width: 100%;
-  height: 8px;
-  background-color: ${p => p.theme.colors.gray};
-  box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.06),
-    inset 0px -1.71846px 3.43693px #ae7be3, inset 0px 3.43693px 2.5777px #fbf8ff;
-`;
-
 export const Tweets = styled.p`
   text-transform: uppercase;
   color: ${p => p.theme.colors.gray};
-  text-align: center;
   margin-top: 62px;
 `;
 
 export const Followers = styled.p`
   text-transform: uppercase;
   color: ${p => p.theme.colors.gray};
-  text-align: center;
   margin-top: 16px;
 `;
 
@@ -112,4 +106,10 @@ export const BtnFollow = styled.button`
     p.isFollowing ? p.theme.colors.green : p.theme.colors.gray};
   box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
+
+  :hover,
+  :focus {
+    background-color: ${p => p.theme.colors.green};
+    color: #eee;
+  }
 `;
