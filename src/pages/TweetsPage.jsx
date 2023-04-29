@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Container from '../components/Container/Container';
 import CardGallery from '../components/CardList/CardGallery';
 import { BtnLoadMore } from '../components/BtnLoadMore/BtnLoadMore';
@@ -11,7 +11,6 @@ function TweetsPage() {
   const [page, setPage] = useState(1);
   const [isHasUsers, setIsHasUsers] = useState(true);
   const [loading, setLoading] = useState(false);
-
   const onLoadMore = () => setPage(prevPage => prevPage + 1);
 
   useEffect(() => {

@@ -4,7 +4,7 @@ import BgImage from '../../images/icon-bg.png';
 
 export const CardUser = styled.li`
   position: relative;
-  width: 380px;
+  flex-basis: 380px;
   height: 460px;
   text-align: center;
   background-image: url(${BgImage}),
@@ -26,6 +26,21 @@ export const CardUser = styled.li`
       inset 0px -1.71846px 3.43693px #ae7be3,
       inset 0px 3.43693px 2.5777px #fbf8ff;
   }
+
+  ::after {
+    content: '';
+    position: absolute;
+    top: 178px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: ${p => p.theme.colors.gray};
+    box-shadow: 0px 4.39163px 4.39163px rgba(0, 0, 0, 0.06),
+      inset 0px -2.19582px 4.39163px #ae7be3,
+      inset 0px 4.39163px 3.29372px #fbf8ff;
+  }
 `;
 
 export const IconGoit = styled(Icon)`
@@ -38,23 +53,12 @@ export const IconGoit = styled(Icon)`
   width: 76px;
 `;
 
-export const AvatarBox = styled.div`
-  position: absolute;
-  left: 150px;
-  top: 178px;
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: ${p => p.theme.colors.gray};
-  box-shadow: 0px 4.39163px 4.39163px rgba(0, 0, 0, 0.06),
-    inset 0px -2.19582px 4.39163px #ae7be3,
-    inset 0px 4.39163px 3.29372px #fbf8ff;
-`;
-
 export const PhotoBox = styled.div`
+  z-index: 100;
+  position: absolute;
+  left: 50%;
+  top: 187px;
+  transform: translateX(-50%);
   width: 64px;
   height: 64px;
   border-radius: 32px;
@@ -101,14 +105,14 @@ export const BtnFollow = styled.button`
 
   width: 196px;
   height: 50px;
+  will-change: background-color;
 
   background-color: ${p =>
     p.isFollowing ? p.theme.colors.green : p.theme.colors.gray};
   box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
 
-  :hover,
-  :focus {
+  :hover {
     background-color: ${p => p.theme.colors.green};
     color: #eee;
   }

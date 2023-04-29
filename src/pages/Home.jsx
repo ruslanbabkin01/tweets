@@ -1,4 +1,3 @@
-import React from 'react';
 import { Container } from '../components/SharedLayout/SharedLayout.styled';
 import styled from '@emotion/styled';
 

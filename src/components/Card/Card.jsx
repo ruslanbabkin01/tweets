@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import { useState } from 'react';
 import {
-  AvatarBox,
   BtnFollow,
   CardUser,
   Followers,
@@ -11,16 +10,17 @@ import {
 } from './Card.styled';
 import { updateFollowers } from '../../services/API';
 
-function Card({ tweets, id, followers, avatar }) {
-  const [isFollowing, setIsFollowing] = useState(false);
+function Card({
+  tweets,
+  id,
+  followers,
+  avatar,
+  followingArr,
+  addId,
+  removeId,
+}) {
+  const [isFollowing, setIsFollowing] = useState(followingArr.includes(id));
   const [followerCount, setFollowerCount] = useState(followers);
-
-  useEffect(() => {
-    const following = localStorage.getItem(`following_${id}`);
-    if (following !== null) {
-      setIsFollowing(following === 'true');
-    }
-  }, [id]);
 
   const handleClick = async () => {
     setIsFollowing(!isFollowing);
@@ -29,18 +29,17 @@ function Card({ tweets, id, followers, avatar }) {
       : followerCount + 1;
     await updateFollowers(id, newFollowerCount);
     setFollowerCount(newFollowerCount);
-    localStorage.setItem(`following_${id}`, !isFollowing);
+
+    isFollowing ? removeId(id) : addId(id);
   };
 
   return (
     <CardUser>
       <IconGoit />
 
-      <AvatarBox>
-        <PhotoBox>
-          <ImageAva src={avatar} alt="avatar" />
-        </PhotoBox>
-      </AvatarBox>
+      <PhotoBox>
+        <ImageAva src={avatar} alt="avatar" />
+      </PhotoBox>
 
       <Tweets>{tweets} tweets</Tweets>
       <Followers>{followerCount.toLocaleString('en-US')} followers</Followers>
