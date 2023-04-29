@@ -7,17 +7,15 @@ function CardGallery({ users }) {
 
   function removeId(id) {
     setFollowingArr(prevArr => prevArr.filter(clikedIds => clikedIds !== id));
-    localStorage.setItem('followingArr', JSON.stringify(followingArr));
   }
 
   function addId(id) {
     setFollowingArr(prevArr => [...prevArr, id]);
-    localStorage.setItem('followingArr', JSON.stringify(followingArr));
   }
 
   return (
     <CardList>
-      {users.map(({ user, tweets, id, followers, avatar }) => (
+      {users.map(({ tweets, id, followers, avatar }) => (
         <Card
           key={id}
           id={id}
