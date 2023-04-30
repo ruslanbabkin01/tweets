@@ -9,18 +9,28 @@ import {
   Tweets,
 } from './Card.styled';
 import { updateFollowers } from '../../services/API';
+import { ICard } from '../../types/card';
 
-function Card({
-  tweets,
-  id,
-  followers,
-  avatar,
+
+interface ICardProps {
+  user: ICard,
+  followingArr: string[],
+  addId: (id: string) => void,
+  removeId: (id: string) => void;
+}
+
+function Card({ user:
+  { tweets,
+    id,
+    followers,
+    avatar },
   followingArr,
   addId,
   removeId,
-}) {
+}: ICardProps) {
+  
   const [isFollowing, setIsFollowing] = useState(followingArr.includes(id));
-  const [followerCount, setFollowerCount] = useState(followers);
+  const [followerCount, setFollowerCount] = useState<number>(followers);
 
   const handleClick = async () => {
     setIsFollowing(!isFollowing);
@@ -44,7 +54,7 @@ function Card({
       <Tweets>{tweets} tweets</Tweets>
       <Followers>{followerCount.toLocaleString('en-US')} followers</Followers>
 
-      <BtnFollow onClick={handleClick} isFollowing={isFollowing}>
+      <BtnFollow onClick={handleClick}>
         {isFollowing ? 'Following' : 'Follow'}
       </BtnFollow>
     </CardUser>
@@ -52,3 +62,6 @@ function Card({
 }
 
 export default Card;
+
+
+// isFollowing={isFollowing}

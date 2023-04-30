@@ -1,20 +1,24 @@
 import { useEffect, useState } from 'react';
 import Container from '../components/Container/Container';
 import CardGallery from '../components/CardList/CardGallery';
-import { BtnLoadMore } from '../components/BtnLoadMore/BtnLoadMore';
+import  BtnLoadMore  from '../components/BtnLoadMore/BtnLoadMore';
 import { fetchUsers } from '../services/API';
 import BackButton from '../components/BackButton/BackButton';
 import { LIMIT_CARDS } from '../utils/constants';
+import { AxiosError } from 'axios';
+import { toast } from 'react-toastify';
+import { ICard } from '../types/card';
 
 function TweetsPage() {
-  const [users, setUsers] = useState([]);
-  const [page, setPage] = useState(1);
-  const [isHasUsers, setIsHasUsers] = useState(true);
-  const [loading, setLoading] = useState(false);
-  const onLoadMore = () => setPage(prevPage => prevPage + 1);
+  const [users, setUsers] = useState<ICard[]>( []);
+  const [page, setPage] = useState<number>(1);
+  const [isHasUsers, setIsHasUsers] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const onLoadMore = (): void => setPage(prevPage => prevPage + 1);
 
   useEffect(() => {
-    (async function () {
+    async function getUsers () {
       setLoading(true);
       try {
         const response = await fetchUsers(page);
@@ -24,10 +28,13 @@ function TweetsPage() {
           setIsHasUsers(false);
         }
         setLoading(false);
-      } catch (error) {
-        console.log(error);
+      } catch (e: unknown) {
+        const error = e as AxiosError;
+        console.log(error.message);
+        toast.error(error.message)
       }
-    })();
+    }
+  getUsers()
   }, [page]);
 
   return (
@@ -37,7 +44,6 @@ function TweetsPage() {
 
       {isHasUsers === true && users.length > 0 && (
         <BtnLoadMore
-          disabled={!isHasUsers}
           onLoadMore={onLoadMore}
           loading={loading}
         />
