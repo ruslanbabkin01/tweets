@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { ReactComponent as Icon } from '../../images/logo.svg';
 import BgImage from '../../images/icon-bg.png';
+import { ReactComponent as Icon } from '../../images/logo.svg';
 
 export const CardUser = styled.li`
   position: relative;
@@ -86,7 +86,11 @@ export const Followers = styled.p`
   margin-top: 16px;
 `;
 
-export const BtnFollow = styled.button`
+interface BtnFollowProps {
+  readonly isFollowing: boolean;
+}
+
+export const BtnFollow = styled.button<BtnFollowProps>`
   font-weight: ${p => p.theme.fontWeight.semiBold};
   font-family: inherit;
   font-size: ${p => p.theme.fontSize.m};

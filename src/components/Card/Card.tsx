@@ -54,7 +54,7 @@ function Card({ user:
       <Tweets>{tweets} tweets</Tweets>
       <Followers>{followerCount.toLocaleString('en-US')} followers</Followers>
 
-      <BtnFollow onClick={handleClick}>
+      <BtnFollow onClick={handleClick} isFollowing={isFollowing}>
         {isFollowing ? 'Following' : 'Follow'}
       </BtnFollow>
     </CardUser>
@@ -64,4 +64,3 @@ function Card({ user:
 export default Card;
 
 
-// isFollowing={isFollowing}

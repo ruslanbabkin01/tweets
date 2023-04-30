@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 
 const ContainerWrapp = styled.div`
@@ -8,7 +9,11 @@ const ContainerWrapp = styled.div`
   flex-direction: column;
 `;
 
-const Container = ({ children }) => {
+type ContainerProps = {
+  children: React.ReactNode;
+};
+
+const Container = ({ children } : ContainerProps ) => {
   return <ContainerWrapp>{children}</ContainerWrapp>;
 };
 
