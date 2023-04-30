@@ -1,6 +1,6 @@
-import { css } from '@emotion/react';
+import { createGlobalStyle } from 'styled-components';
 
-export const GlobalStyles = css`
+export const GlobalStyles = createGlobalStyle`
   body {
     margin: 0;
     font-family: 'Montserrat', sans-serif;;

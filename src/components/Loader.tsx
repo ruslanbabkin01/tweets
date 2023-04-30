@@ -1,5 +1,5 @@
 import { ThreeCircles } from 'react-loader-spinner';
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 
 export const Loader = () => (
   <Box>

@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 
 const ContainerWrapp = styled.div`
   margin: 0 auto;
