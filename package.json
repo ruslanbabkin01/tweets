@@ -1,6 +1,5 @@
 {
   "name": "tweets",
-  "homepage": "https://ruslanbabkin01.github.io/tweets",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
