@@ -1,6 +1,7 @@
+import React from 'react';
 import { Container, Header, StyledLink } from './SharedLayout.styled';
 
-export const SharedLayout = () => {
+const SharedLayout: React.FC = () => {
   return (
     <Container>
       <Header>
@@ -12,3 +13,5 @@ export const SharedLayout = () => {
     </Container>
   );
 };
+
+export default SharedLayout;

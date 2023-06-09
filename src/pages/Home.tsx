@@ -1,4 +1,4 @@
-import { Container } from '../components/SharedLayout/SharedLayout.styled';
+import { Container } from '../components';
 import { Caption, Text } from './Home.styled';
 
 function Home() {
@@ -13,5 +13,3 @@ function Home() {
 }
 
 export default Home;
-
-

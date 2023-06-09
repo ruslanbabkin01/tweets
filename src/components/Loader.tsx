@@ -1,7 +1,7 @@
 import { ThreeCircles } from 'react-loader-spinner';
 import styled from 'styled-components';
 
-export const Loader = () => (
+const Loader = () => (
   <Box>
     <ThreeCircles
       height="100"
@@ -17,6 +17,8 @@ export const Loader = () => (
     />
   </Box>
 );
+
+export default Loader
 
 export const Box = styled.div`
   width: 100%;

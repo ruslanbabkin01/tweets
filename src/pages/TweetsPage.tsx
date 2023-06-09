@@ -1,13 +1,10 @@
 import { useEffect, useState } from 'react';
-import Container from '../components/Container/Container';
-import CardGallery from '../components/CardList/CardGallery';
-import  BtnLoadMore  from '../components/BtnLoadMore/BtnLoadMore';
 import { fetchUsers } from '../services/API';
-import BackButton from '../components/BackButton/BackButton';
 import { LIMIT_CARDS } from '../utils/constants';
 import { AxiosError } from 'axios';
 import { toast } from 'react-toastify';
 import { ICard } from '../types/card';
+import { BackButton, BtnLoadMore, CardGallery, Container } from '../components';
 
 function TweetsPage() {
   const [users, setUsers] = useState<ICard[]>( []);
