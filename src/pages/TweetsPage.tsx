@@ -7,7 +7,7 @@ import { ICard } from '../types/card';
 import { BackButton, BtnLoadMore, CardGallery, Container } from '../components';
 
 function TweetsPage() {
-  const [users, setUsers] = useState<ICard[]>( []);
+  const [users, setUsers] = useState<ICard[]>([]);
   const [page, setPage] = useState<number>(1);
   const [isHasUsers, setIsHasUsers] = useState<boolean>(true);
   const [loading, setLoading] = useState<boolean>(false);
@@ -15,7 +15,7 @@ function TweetsPage() {
   const onLoadMore = (): void => setPage(prevPage => prevPage + 1);
 
   useEffect(() => {
-    async function getUsers () {
+    async function getUsers() {
       setLoading(true);
       try {
         const response = await fetchUsers(page);
@@ -28,10 +28,10 @@ function TweetsPage() {
       } catch (e: unknown) {
         const error = e as AxiosError;
         console.log(error.message);
-        toast.error(error.message)
+        toast.error(error.message);
       }
     }
-  getUsers()
+    getUsers();
   }, [page]);
 
   return (
@@ -40,10 +40,7 @@ function TweetsPage() {
       <CardGallery users={users} />
 
       {isHasUsers === true && users.length > 0 && (
-        <BtnLoadMore
-          onLoadMore={onLoadMore}
-          loading={loading}
-        />
+        <BtnLoadMore onLoadMore={onLoadMore} loading={loading} />
       )}
     </Container>
   );
