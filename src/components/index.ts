@@ -5,3 +5,4 @@ export { default as CardGallery } from './CardList/CardGallery.tsx';
 export { default as Container } from './Container/Container.tsx';
 export { default as SharedLayout } from './SharedLayout/SharedLayout.tsx';
 export { default as Loader } from './Loader.tsx';
+export { default as SelectFilter } from './SelectFilter/SelectFilter.tsx';

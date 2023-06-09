@@ -13,6 +13,7 @@ The application has 2 pages Home and Tweets. The Tweets page loads user cards fr
 - react-router-dom
 - styled-components
 - axios
+- react-select
 - local-storage
 
 

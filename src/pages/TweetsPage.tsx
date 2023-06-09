@@ -37,6 +37,7 @@ function TweetsPage() {
   return (
     <Container>
       <BackButton />
+
       <CardGallery users={users} />
 
       {isHasUsers === true && users.length > 0 && (
